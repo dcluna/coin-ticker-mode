@@ -26,8 +26,8 @@ Your Emacs config should have some code like this:
 ;; Optional: Set the update interval, in seconds (default 300)
 (setq coin-ticker-api-poll-interval 120)
 
-;; Optional: Set the currency list (default is BTC and ETH)
-(setq coin-ticker-syms '("BTC" "ETH" "LTC" "XPR"))
+;; Optional: Set the currency list (default is BTC and ETH). Right in the alist is the displayed symbol (will use the ticker if nil)
+(setq coin-ticker-syms '(( "BTC" . "Ƀ") ("ETH" . "Ξ") ("LTC" . "Ł") ("XRP" . nil)))
 
 ;; Optional: Just show prices (and no symbols)
 (setq coin-ticker-show-syms nil)

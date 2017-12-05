@@ -58,8 +58,8 @@
   :type 'number
   :group 'coin-ticker)
 
-(defcustom coin-ticker-syms '("BTC" "ETH")
-  "Coins to show."
+(defcustom coin-ticker-syms '(("BTC" . "Ƀ") ("ETH" . "Ξ"))
+  "coins to show."
   :group 'coin-ticker)
 
 (defcustom coin-ticker-show-syms t
@@ -117,9 +117,9 @@
   (setq coin-ticker-mode-line
         (format "[%s]"
                 (string-join
-                 (cl-loop for sym in coin-ticker-syms
+                 (cl-loop for (sym . abbrev) in coin-ticker-syms
                           collect
-                          (coin-ticker-price-fmt sym (gethash sym prices))) " "))))
+                          (coin-ticker-price-fmt (or abbrev sym) (gethash sym prices))) " "))))
 
 (defun coin-ticker-build-params ()
   "Build the HTTP params."
